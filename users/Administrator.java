@@ -5,6 +5,7 @@ import java.util.Scanner;
 import entity.*;
 import dao.*;
 import service.*;
+import ui.Main;
 
 public class Administrator {
 	
@@ -49,6 +50,8 @@ public class Administrator {
 					//overrideCancellation();
 					break;
 				case 8:
+					Main main = new Main();
+					main.main_menu();
 					break;
 				default:
 					System.out.println("Please enter a number 1 through 8");
