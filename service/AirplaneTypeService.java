@@ -44,7 +44,7 @@ public class AirplaneTypeService{
 		
 	}
 	
-	public List<AirplaneType> getAirplaneType(AirplaneType type) throws SQLException {
+	public AirplaneType getAirplaneType(AirplaneType type) throws SQLException {
 		Connection conn = null;
 		List<AirplaneType> types = new ArrayList<>();
 		try {
@@ -56,7 +56,7 @@ public class AirplaneTypeService{
 		} finally {
 			conn.close();
 		}
-		return types;
+		return types.get(0);
 	}
 	
 	public void updateAirplaneType(AirplaneType type) throws SQLException {

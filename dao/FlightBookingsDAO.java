@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.Booking;
+import entity.Flight;
 import entity.FlightBookings;
 
 public class FlightBookingsDAO extends BaseDAO<FlightBookings>{
@@ -29,7 +31,7 @@ public class FlightBookingsDAO extends BaseDAO<FlightBookings>{
 	}
 	
 	public List<FlightBookings> read(FlightBookings booking) throws ClassNotFoundException, SQLException {
-		return read("select from flight_bookings where booking_id = ?", new Object[] {});
+		return read("select * from flight_bookings where booking_id = ?", new Object[] {});
 	}
 
 	public List<FlightBookings> readAll() throws ClassNotFoundException, SQLException {
@@ -46,7 +48,9 @@ public class FlightBookingsDAO extends BaseDAO<FlightBookings>{
 			//route.getDestAirport().setAirportCode(rs.getString("destination_id"));
 			//routes.add(route);
 			FlightBookings booking = new FlightBookings();
+			booking.setFlight(new Flight());
 			booking.getFlight().setId(rs.getInt("flight_id"));
+			booking.setBooking(new Booking());
 			booking.getBooking().setId(rs.getInt("booking_id"));
 			bookings.add(booking);
 		}

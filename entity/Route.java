@@ -24,4 +24,12 @@ public class Route {
 	public void setDestAirport(Airport destAirport) {
 		this.destAirport = destAirport;
 	}
+	
+	public Route(Integer id) {
+		this.id = id;
+	}
+	
+	public Route() {
+		
+	}
 }

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.Booking;
 import entity.BookingPayment;
 
 public class BookingPaymentDAO extends BaseDAO<BookingPayment>{
@@ -29,7 +30,7 @@ public class BookingPaymentDAO extends BaseDAO<BookingPayment>{
 	}
 	
 	public List<BookingPayment> read(BookingPayment payment) throws ClassNotFoundException, SQLException {
-		return read("select from booking_payment where id = ?", new Object[] { payment.getBooking() });
+		return read("select * from booking_payment where id = ?", new Object[] { payment.getBooking() });
 	}
 
 	public List<BookingPayment> readAll() throws ClassNotFoundException, SQLException {
@@ -41,6 +42,7 @@ public class BookingPaymentDAO extends BaseDAO<BookingPayment>{
 		List<BookingPayment> payments = new ArrayList<>();
 		while (rs.next()) {
 			BookingPayment payment = new BookingPayment();
+			payment.setBooking(new Booking());
 			payment.getBooking().setId(rs.getInt("booking_id"));
 			payment.setId(rs.getString("stripe_id"));
 			payment.setRefunded(rs.getInt("refunded"));

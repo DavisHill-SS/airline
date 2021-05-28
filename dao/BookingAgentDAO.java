@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.Booking;
 import entity.BookingAgent;
+import entity.User;
 
 public class BookingAgentDAO extends BaseDAO<BookingAgent>{
 	
@@ -29,7 +31,7 @@ public class BookingAgentDAO extends BaseDAO<BookingAgent>{
 	}
 	
 	public List<BookingAgent> read(BookingAgent agent) throws ClassNotFoundException, SQLException {
-		return read("select from booking_agent where id = ?", new Object[] { agent.getAgent() });
+		return read("select * from booking_agent where id = ?", new Object[] { agent.getAgent() });
 	}
 
 	public List<BookingAgent> readAll() throws ClassNotFoundException, SQLException {
@@ -41,7 +43,9 @@ public class BookingAgentDAO extends BaseDAO<BookingAgent>{
 		List<BookingAgent> agents = new ArrayList<>();
 		while (rs.next()) {
 			BookingAgent agent = new BookingAgent();
+			agent.setBooking(new Booking());
 			agent.getBooking().setId(rs.getInt("booking_id"));
+			agent.setAgent(new User());
 			agent.getAgent().setId(rs.getInt("agent_id"));
 			agents.add(agent);
 		}

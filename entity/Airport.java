@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.Scanner;
 
 public class Airport {
 	
@@ -16,6 +17,14 @@ public class Airport {
 	}
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
+	}
+	
+	public Airport() {
+		
+	}
+	
+	public Airport(String iata_id) {
+		this.airportCode = iata_id;
 	}
 
 }

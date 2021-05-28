@@ -30,7 +30,7 @@ public class BookingDAO extends BaseDAO<Booking>{
 	}
 	
 	public List<Booking> read(Booking booking) throws ClassNotFoundException, SQLException {
-		return read("select from booking where id = ?", new Object[] { booking.getId() });
+		return read("select * from booking where id = ?", new Object[] { booking.getId() });
 	}
 
 	public List<Booking> readAll() throws ClassNotFoundException, SQLException {

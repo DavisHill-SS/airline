@@ -44,7 +44,7 @@ public class BookingUserService{
 		
 	}
 	
-	public List<BookingUser> get(BookingUser user) throws SQLException {
+	public BookingUser get(BookingUser user) throws SQLException {
 		Connection conn = null;
 		List<BookingUser> users = new ArrayList<>();
 		try {
@@ -56,7 +56,7 @@ public class BookingUserService{
 		} finally {
 			conn.close();
 		}
-		return users;
+		return users.get(0);
 	}
 	
 	public void update(BookingUser user) throws SQLException {

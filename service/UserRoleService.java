@@ -43,7 +43,7 @@ public class UserRoleService{
 		
 	}
 	
-	public List<UserRole> get(UserRole role) throws SQLException {
+	public UserRole get(UserRole role) throws SQLException {
 		Connection conn = null;
 		List<UserRole> roles = new ArrayList<>();
 		try {
@@ -55,7 +55,7 @@ public class UserRoleService{
 		} finally {
 			conn.close();
 		}
-		return roles;
+		return roles.get(0);
 	}
 	
 	public void update(UserRole role) throws SQLException {

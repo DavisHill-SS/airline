@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Scanner;
+
 public class User {
 	private Integer id;
 	private UserRole role;
@@ -56,6 +58,14 @@ public class User {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	public User(Integer id) {
+		this.id = id;
+	}
+	
+	public User() {
+		
 	}
 
 }

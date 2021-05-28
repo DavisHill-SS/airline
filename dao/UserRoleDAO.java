@@ -28,7 +28,7 @@ public class UserRoleDAO extends BaseDAO<UserRole>{
 	}
 	
 	public List<UserRole> read(UserRole role) throws ClassNotFoundException, SQLException {
-		return read("select from user_role where id = ?", new Object[] { role.getId() });
+		return read("select * from user_role where id = ?", new Object[] { role.getId() });
 	}
 
 	public List<UserRole> readAll() throws ClassNotFoundException, SQLException {

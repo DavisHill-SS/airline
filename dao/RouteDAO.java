@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.Airport;
 import entity.Route;
 
 
@@ -30,8 +31,13 @@ public class RouteDAO extends BaseDAO<Route> {
 	}
 	
 	public List<Route> read(Route route) throws ClassNotFoundException, SQLException {
-		return read("select from route where id = ?", new Object[] {route.getId()});
+		return read("select * from route where id = ?", new Object[] { route.getId() });
 	}
+	
+	public List<Route> readByOriginAndDestination(Route route) throws ClassNotFoundException, SQLException {
+		return read("select * from route where origin_id = ? and destination_id = ?", new Object[] { route.getOriginAirport().getAirportCode(),
+				route.getDestAirport().getAirportCode() });
+		}
 
 	public List<Route> readAll() throws ClassNotFoundException, SQLException {
 		return read("select * from route", null);
@@ -48,7 +54,9 @@ public class RouteDAO extends BaseDAO<Route> {
 		while (rs.next()) {
 			Route route = new Route();
 			route.setId(rs.getInt("id"));
+			route.setOriginAirport(new Airport());
 			route.getOriginAirport().setAirportCode(rs.getString("origin_id"));
+			route.setDestAirport(new Airport());
 			route.getDestAirport().setAirportCode(rs.getString("destination_id"));
 			routes.add(route);
 		}

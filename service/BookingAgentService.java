@@ -43,7 +43,7 @@ public class BookingAgentService{
 		
 	}
 	
-	public List<BookingAgent> getBookingAgent(BookingAgent agent) throws SQLException {
+	public BookingAgent getBookingAgent(BookingAgent agent) throws SQLException {
 		Connection conn = null;
 		List<BookingAgent> agents = new ArrayList<>();
 		try {
@@ -55,7 +55,7 @@ public class BookingAgentService{
 		} finally {
 			conn.close();
 		}
-		return agents;
+		return agents.get(0);
 	}
 	
 	public void updateBookingAgent(BookingAgent agent) throws SQLException {

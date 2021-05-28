@@ -16,6 +16,14 @@ public class UserRole {
 		this.name = name;
 	}
 	
+	public UserRole(Integer id) {
+		this.id = id;
+	}
+	
+	public UserRole() {
+		
+	}
+	
 	
 
 }

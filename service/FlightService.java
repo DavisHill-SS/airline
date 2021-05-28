@@ -19,6 +19,7 @@ public class FlightService {
 			conn = connUtil.getConnection();
 			FlightDAO fdao = new FlightDAO(conn);
 			flights = fdao.readAll();
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -33,7 +34,7 @@ public class FlightService {
 			conn = connUtil.getConnection();
 			FlightDAO fdao = new FlightDAO(conn);
 			fdao.create(flight);
-			conn.commit(); //this makes the change permanent. 
+			conn.commit();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			conn.rollback();
@@ -43,7 +44,7 @@ public class FlightService {
 		
 	}
 	
-	public List<Flight> getFlight(Flight flight) throws SQLException {
+	public Flight getFlight(Flight flight) throws SQLException {
 		Connection conn = null;
 		List<Flight> flights = new ArrayList<>();
 		try {
@@ -55,7 +56,7 @@ public class FlightService {
 		} finally {
 			conn.close();
 		}
-		return flights;
+		return flights.get(0);
 	}
 	
 	public void updateFlight(Flight flight) throws SQLException {

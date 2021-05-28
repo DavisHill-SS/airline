@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.Airplane;
+import entity.AirplaneType;
 
 public class AirplaneDAO extends BaseDAO<Airplane>{
 	
@@ -28,7 +29,7 @@ public class AirplaneDAO extends BaseDAO<Airplane>{
 	}
 	
 	public List<Airplane> read(Airplane airplane) throws ClassNotFoundException, SQLException {
-		return read("select from where id = ?", new Object[] { airplane.getId() });
+		return read("select * from where id = ?", new Object[] { airplane.getId() });
 	}
 
 	public List<Airplane> readAll() throws ClassNotFoundException, SQLException {
@@ -41,6 +42,7 @@ public class AirplaneDAO extends BaseDAO<Airplane>{
 		while (rs.next()) {
 			Airplane airplane = new Airplane();
 			airplane.setId(rs.getInt("id"));
+			airplane.setAirplaneType(new AirplaneType());
 			airplane.getAirplaneType().setId(rs.getInt("type_id"));
 			airplanes.add(airplane);
 		}

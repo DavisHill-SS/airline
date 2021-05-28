@@ -43,7 +43,7 @@ public class RouteService{
 		
 	}
 	
-	public List<Route> getRoute(Route route) throws SQLException {
+	public Route getRoute(Route route) throws SQLException {
 		Connection conn = null;
 		List<Route> routes = new ArrayList<>();
 		try {
@@ -55,7 +55,7 @@ public class RouteService{
 		} finally {
 			conn.close();
 		}
-		return routes;
+		return routes.get(0);
 	}
 	
 	public void updateRoute(Route route) throws SQLException {

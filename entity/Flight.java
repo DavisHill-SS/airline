@@ -52,69 +52,15 @@ public class Flight {
 		this.seatPrice = seatPrice;
 	}
 	
-	
-	public Flight (Integer id){
-		Scanner scan = new Scanner(System.in);
-		//Flight flight = new Flight();
-		//String[] list = {"route","airplane","departure time",
-		//	"reserved seats", "seat price"};
-		System.out.println("Available routes...");
-		RouteService rs = new RouteService();
-		List<Route> routes;
-		
-		try {
-			routes = rs.getAllRoutes();
-			for(Route route: routes){
-				System.out.println(route);
-			}
-			System.out.print("Select a route by id: ");
-			Integer route_id = scan.nextInt();
-			Route route = routes.get(route_id);
-			this.setRoute(route);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		
-		System.out.println("Available airplanes...");
-		AirplaneService as = new AirplaneService();
-		List<Airplane> airplanes;
-		try {
-			airplanes = as.getAllAirplanes();
-			for(Airplane airplane: airplanes) {
-				System.out.println(airplane);
-			}
-			System.out.print("Select an airplane by id: ");
-			Integer airplane_id = scan.nextInt();
-			Airplane airplane = airplanes.get(airplane_id);
-			this.setAirplane(airplane);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		
-		System.out.println("Enter departure date in form YYYY-mm-dd");
-		String date = scan.next();
-		System.out.println("Enter departure time in form HH:MM");
-		String time = scan.next();
-		String datetime = date + "T" + time;
-		this.setDepartureTime(datetime);
-		
-		System.out.println("Enter number of seats");
-		Integer seats = scan.nextInt();
-		this.setReservedSeats(seats);
-		
-		System.out.println("Enter seat price");
-		Float price = scan.nextFloat();
-		this.setSeatPrice(price);
-		scan.close();
-		
-	}
 	public Flight() {
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+	public Flight(Integer id) {
+		this.id = id;
+	}
+	
+
 	
 
 }

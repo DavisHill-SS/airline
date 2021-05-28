@@ -43,7 +43,7 @@ public class PassengerService{
 		
 	}
 	
-	public List<Passenger> get(Passenger passenger) throws SQLException {
+	public Passenger get(Passenger passenger) throws SQLException {
 		Connection conn = null;
 		List<Passenger> passengers = new ArrayList<>();
 		try {
@@ -55,7 +55,7 @@ public class PassengerService{
 		} finally {
 			conn.close();
 		}
-		return passengers;
+		return passengers.get(0);
 	}
 	
 	public void update(Passenger passenger) throws SQLException {

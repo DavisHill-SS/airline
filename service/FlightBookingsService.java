@@ -43,7 +43,7 @@ public class FlightBookingsService {
 		
 	}
 	
-	public List<FlightBookings> get(FlightBookings booking) throws SQLException {
+	public FlightBookings get(FlightBookings booking) throws SQLException {
 		Connection conn = null;
 		List<FlightBookings> bookings = new ArrayList<>();
 		try {
@@ -55,7 +55,7 @@ public class FlightBookingsService {
 		} finally {
 			conn.close();
 		}
-		return bookings;
+		return bookings.get(0);
 	}
 	
 	public void update(FlightBookings booking) throws SQLException {

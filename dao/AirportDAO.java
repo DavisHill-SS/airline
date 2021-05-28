@@ -30,7 +30,7 @@ public class AirportDAO extends BaseDAO<Airport> {
 	}
 	
 	public List<Airport> read(Airport airport) throws ClassNotFoundException, SQLException {
-		return read("select from airport where id = ?", new Object[] { airport.getAirportCode() });
+		return read("select * from airport where iata_id = ?", new Object[] { airport.getAirportCode() });
 	}
 
 	public List<Airport> readAll() throws ClassNotFoundException, SQLException {

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.User;
+import entity.UserRole;
 
 public class UserDAO extends BaseDAO<User>{
 	
@@ -32,11 +33,15 @@ public class UserDAO extends BaseDAO<User>{
 	}
 	
 	public List<User> read(User user) throws ClassNotFoundException, SQLException {
-		return read("select from user where id = ?", new Object[] { user.getId() });
+		return read("select * from user where id = ?", new Object[] { user.getId() });
 	}
 
 	public List<User> readAll() throws ClassNotFoundException, SQLException {
 		return read("select * from user", null);
+	}
+	
+	public List<User> readAllTravelers() throws ClassNotFoundException, SQLException {
+		return read("select * from user where role_id = 3", null);
 	}
 
 	@Override
@@ -45,6 +50,7 @@ public class UserDAO extends BaseDAO<User>{
 		while (rs.next()) {
 			User user = new User();
 			user.setId(rs.getInt("id"));
+			user.setRole(new UserRole());
 			user.getRole().setId(rs.getInt("role_id"));
 			user.setGivenName(rs.getString("given_name"));
 			user.setFamilyName(rs.getString("family_name"));
